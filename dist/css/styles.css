@@ -1,4 +1,78 @@
-body {
-  background-color: yellow;
-  color: red;
+@font-face {
+  font-family: "Cabin";
+  src: local("Cabin"), local("Cabin-Regular"), url("../fonts/cabin-v14-latin-regular.woff2") format("woff2"), url("../fonts/cabin-v14-latin-regular.woff") format("woff");
+}
+
+#calc {
+  width: 260px;
+  font-family: "Cabin";
+}
+
+#calc > * {
+  width: 100%;
+}
+
+#calc > *.calc__header {
+  height: 180px;
+  background-color: #29363c;
+  text-align: right;
+}
+
+#calc > *.calc__header > * {
+  position: relative;
+  top: 45px;
+  right: 25px;
+}
+
+#calc > *.calc__header > *.calc__header__sum {
+  color: #6f797b;
+  font-size: 22px;
+}
+
+#calc > *.calc__header > *.calc__header__result {
+  color: #fff;
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+
+#calc > *.calc__buttons {
+  font-size: 0;
+  /* Remove space between buttons */
+}
+
+#calc > *.calc__buttons button {
+  width: 25%;
+  margin: 0;
+  margin: 0;
+  border: 0;
+  height: 65px;
+  color: #fff;
+  font-size: 18px;
+}
+
+#calc > *.calc__buttons button:focus {
+  outline: none;
+}
+
+#calc > *.calc__buttons button:active {
+  color: #29363c;
+}
+
+#calc > *.calc__buttons button.action {
+  background-color: #ed475d;
+  border-top: 1px solid #b74b5b;
+}
+
+#calc > *.calc__buttons button.action[data-role="save"] {
+  width: 50%;
+}
+
+#calc > *.calc__buttons button[data-role="operator"] {
+  background-color: #f7b986;
+  border-top: 1px solid #d19968;
+}
+
+#calc > *.calc__buttons button[data-role="number"], #calc > *.calc__buttons button[data-role="dot"] {
+  background-color: #f78279;
+  border-top: 1px solid #d46760;
 }

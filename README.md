@@ -1,6 +1,6 @@
 # Calculator
 
-## Instructions to review
+## Instructions to view
 
 1. Clone this repo.
 2. `cd` into the root of the repo.

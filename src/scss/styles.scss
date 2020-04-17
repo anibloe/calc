@@ -1,3 +1,78 @@
-body {
-	background-color: yellow;
+@font-face {
+	font-family: "Cabin";
+	src: local("Cabin"), local("Cabin-Regular"), url("../fonts/cabin-v14-latin-regular.woff2") format("woff2"), url("../fonts/cabin-v14-latin-regular.woff") format("woff");
+}
+
+#calc {
+	width: 260px;
+	font-family: "Cabin";
+
+	& > * {
+		width: 100%;
+
+		&.calc__header {
+			height: 180px;
+			background-color: #29363c;
+			text-align: right;
+
+			& > * {
+				position: relative;
+				top: 45px;
+				right: 25px;
+
+				&.calc__header__sum {
+					color: #6f797b;
+					font-size: 22px;
+				}
+
+				&.calc__header__result {
+					color: #fff;
+					font-size: 48px;
+					letter-spacing: 2px;
+				}
+			}
+		}
+
+		&.calc__buttons {
+			font-size: 0; /* Remove space between buttons */
+
+			button {
+				width: 25%;
+				margin: 0;
+				margin: 0;
+				border: 0;
+				height: 65px;
+				color: #fff;
+				font-size: 18px;
+
+				&:focus {
+					outline: none;
+				}
+
+				&:active {
+					color: #29363c;
+				}
+
+				&.action {
+					background-color: #ed475d;
+					border-top: 1px solid #b74b5b;
+
+					&[data-role="save"] {
+						width: 50%;
+					}
+				}
+
+				&[data-role="operator"] {
+					background-color: #f7b986;
+					border-top: 1px solid #d19968;
+				}
+
+				&[data-role="number"],
+				&[data-role="dot"] {
+					background-color: #f78279;
+					border-top: 1px solid #d46760;
+				}
+			}
+		}
+	}
 }
