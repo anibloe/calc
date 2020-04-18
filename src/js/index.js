@@ -2,7 +2,7 @@ import Calculator from "./models/Calculator";
 import * as calcView from "./views/calcView";
 
 const state = {
-	status: "start", // ['start', 'in_progress']
+	status: "clear", // Previously clicked button
 	calc: new Calculator("", 0), // Initialise the model
 };
 
@@ -17,33 +17,50 @@ window.addEventListener("load", () => {
 // Make the calculator buttons clickable
 const addClickability = (buttonsContainer) => {
 	buttonsContainer.addEventListener("click", (e) => {
-		const clicked = e.target,
-			isDigit = parseInt(clicked.textContent) > -1,
-			isOperator = clicked.className === "operator",
-			isClear = clicked.dataset.role === "clear",
-			isEquals = clicked.dataset.role === "evaluate";
+		try {
+			const clickedBtn = e.target,
+				isClearBtn = clickedBtn.dataset.role === "clear",
+				isSaveBtn = clickedBtn.dataset.role === "save",
+				isEqualsBtn = clickedBtn.dataset.role === "evaluate";
 
-		if (isDigit || isOperator) {
-			// Append the button's value to the sum
-			state.calc.update(e.target.textContent);
+			if (state.status === "evaluate") {
+				// Reset on the click after the equals is clicked
+				state.calc.reset();
+			}
 
-			state.status = "in_progress";
-		} else if (isClear) {
-			// AC button - clear
-			state.calc.reset();
+			if (isClearBtn) {
+				// AC button - clear the values
+				state.calc.reset();
+			} else if (isSaveBtn) {
+				// Save button - save
+			} else if (isEqualsBtn) {
+				// Equals button - evaluate the sum
+				state.calc.evaluate();
+			} else {
+				// Digit or operator button
 
-			state.status = "start";
-		} else if (isEquals) {
-			// Evaluate the sum
-			state.calc.evaluate();
+				// Carry out validation
+				const validation = state.calc.validate(clickedBtn);
 
-			// Mark the end of this sum and the start of the next
-			state.status = "start";
-		} else {
-			return;
+				if (!validation) {
+					return;
+				} else {
+					// Update the current sum
+					state.calc.update(clickedBtn);
+				}
+			}
+
+			// Update the display to reflect the above action
+			calcView.updateDisplay(state.calc);
+
+			// Check for multiple decimal points in the same number
+			if (!(state.status === "decimal" && clickedBtn.dataset.role === "integer")) {
+				// Update the status
+				state.status = clickedBtn.dataset.role;
+			}
+		} catch (err) {
+			// Catch any unknown errors in order to fail gracefully
+			console.log(err.message);
 		}
-
-		// Update the display
-		calcView.updateDisplay(state.calc);
 	});
 };

@@ -4,19 +4,21 @@ export default class Calculator {
 		this.display_bottom = bottomVal;
 	}
 
+	// Return to a fresh state
 	reset() {
 		this.display_top = "";
 		this.display_bottom = 0;
 	}
 
-	update(newVal) {
-		const isDigit = parseInt(newVal) > -1;
+	// Work out what to do with the new value
+	update(button) {
+		const newVal = button.textContent;
 
-		if (!this.display_bottom && isDigit) {
+		if (!this.display_bottom) {
 			// Existing value is zero - overwrite it
 			this.display_bottom = newVal;
-		} else if (!isDigit) {
-			// Append the operator to the sum
+		} else if (button.dataset.role === "operator") {
+			// Append the operator to the sum with added spacing
 			this.display_bottom = `${this.display_bottom} ${newVal} `;
 		} else {
 			// Append the digit to the sum
@@ -24,12 +26,35 @@ export default class Calculator {
 		}
 	}
 
+	// Ensure the new value is a valid scenario
+	validate(button) {
+		const newVal = button.textContent,
+			newStatus = button.dataset.role,
+			curNumIsDec = 0; // TO DO
+
+		if (!newVal.trim()) {
+			// Empty button value
+			return false;
+		} else if (newStatus === "decimal" && curNumIsDec) {
+			// Value is already a decimal - prevent over one dot per number
+			return false;
+		} else if (this.display_bottom === 0 && button.textContent === "0") {
+			// Zero is already shown - prevent another zero
+			return false;
+		}
+		return true;
+	}
+
+	// Calculate the sum
 	evaluate() {
-		// Evaluate the sum
-		//
-		// Update display_top to show the sum
-		//
-		// Update display_bottom to show the answer
-		//
+		// Replace the aesthetic operators for the actual ones
+		const sum = this.display_bottom.replace(/ ÷ /g, " / ").replace(/ x /g, " * "),
+			answer = eval(sum);
+
+		// Update the header top row to show the sum
+		this.display_top = this.display_bottom + " =";
+
+		// Update the header bottom row to show the answer
+		this.display_bottom = answer;
 	}
 }
