@@ -2,8 +2,8 @@ export const render = () => {
 	const markup = `
         <div id="calc">
             <div class="calc__header">
-                <div class="calc__header__sum">365 x 4 =</div>
-                <div class="calc__header__result">1,460</div>
+                <div class="calc__header__sum">&nbsp;</div>
+                <div class="calc__header__result">0</div>
             </div>
 
             <div class="calc__buttons">
@@ -48,4 +48,13 @@ export const render = () => {
     `;
 
 	document.body.insertAdjacentHTML("beforeend", markup);
+};
+
+//
+export const updateDisplay = (state) => {
+	const top = document.querySelector(".calc__header__sum"),
+		bottom = document.querySelector(".calc__header__result");
+
+	top.textContent = state.display_top;
+	bottom.textContent = state.display_bottom;
 };
