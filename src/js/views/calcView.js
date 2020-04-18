@@ -10,35 +10,36 @@ export const render = () => {
                 <div class="row">
                     <button class="action" data-role="clear">AC</button>
                     <button class="action" data-role="save">SAVE</button>
-                    <button data-role="operator">&#247;</button>
+                    <button class="operator" data-role="divide">&#247;</button>
+
                 </div>
                 
                 <div class="row">
-                    <button class="" data-role="dot">.</button>
-                    <button class="" data-role="number">0</button>
-                    <button class="" data-role="number">&nbsp;</button>
-                    <button class="" data-role="operator">&#215;</button>
+                    <button class="digit" data-role="dot">.</button>
+                    <button class="digit">0</button>
+                    <button class="digit">&nbsp;</button>
+                    <button class="operator" data-role="multiply">&#215;</button>
                 </div>
 
                 <div class="row">
-                    <button class="" data-role="number">1</button>
-                    <button class="" data-role="number">2</button>
-                    <button class="" data-role="number">3</button>
-                    <button class="" data-role="operator">&#8722;</button>
+                    <button class="digit">1</button>
+                    <button class="digit">2</button>
+                    <button class="digit">3</button>
+                    <button class="operator" data-role="minus">&#8722;</button>
                 </div>
 
                 <div class="row">
-                    <button class="" data-role="number">4</button>
-                    <button class="" data-role="number">5</button>
-                    <button class="" data-role="number">6</button>
-                    <button class="" data-role="operator">&#43;</button>
+                    <button class="digit">4</button>
+                    <button class="digit">5</button>
+                    <button class="digit">6</button>
+                    <button class="operator" data-role="add">&#43;</button>
                 </div>
 
                 <div class="row">
-                    <button class="" data-role="number">7</button>
-                    <button class="" data-role="number">8</button>
-                    <button class="" data-role="number">9</button>
-                    <button class="" data-role="operator">&#61;</button>
+                    <button class="digit">7</button>
+                    <button class="digit">8</button>
+                    <button class="digit">9</button>
+                    <button class="action operator" data-role="evaluate">&#61;</button>
                 </div>
             </div>
         </div>

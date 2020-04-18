@@ -1,11 +1,15 @@
+@import url(//db.onlinewebfonts.com/c/5b7f117bb7e6466b6c73f42d4d27f200?family=PrimanaW00-Light);
+
 @font-face {
-	font-family: "Cabin";
-	src: local("Cabin"), local("Cabin-Regular"), url("../fonts/cabin-v14-latin-regular.woff2") format("woff2"), url("../fonts/cabin-v14-latin-regular.woff") format("woff");
+	font-family: "PrimanaW00-Light";
+	src: url("//db.onlinewebfonts.com/t/5b7f117bb7e6466b6c73f42d4d27f200.eot");
+	src: url("//db.onlinewebfonts.com/t/5b7f117bb7e6466b6c73f42d4d27f200.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/5b7f117bb7e6466b6c73f42d4d27f200.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/5b7f117bb7e6466b6c73f42d4d27f200.woff") format("woff"), url("//db.onlinewebfonts.com/t/5b7f117bb7e6466b6c73f42d4d27f200.ttf") format("truetype"),
+		url("//db.onlinewebfonts.com/t/5b7f117bb7e6466b6c73f42d4d27f200.svg#PrimanaW00-Light") format("svg");
 }
 
 #calc {
 	width: 260px;
-	font-family: "Cabin";
+	font-family: "PrimanaW00-Light";
 
 	& > * {
 		width: 100%;
@@ -17,18 +21,19 @@
 
 			& > * {
 				position: relative;
-				top: 45px;
+				top: 37px;
 				right: 25px;
 
 				&.calc__header__sum {
 					color: #6f797b;
-					font-size: 22px;
+					font-size: 28px;
 				}
 
 				&.calc__header__result {
 					color: #fff;
-					font-size: 48px;
+					font-size: 60px;
 					letter-spacing: 2px;
+					font-weight: bold;
 				}
 			}
 		}
@@ -38,12 +43,10 @@
 
 			button {
 				width: 25%;
-				margin: 0;
-				margin: 0;
 				border: 0;
 				height: 65px;
 				color: #fff;
-				font-size: 18px;
+				float: left;
 
 				&:focus {
 					outline: none;
@@ -56,21 +59,23 @@
 				&.action {
 					background-color: #ed475d;
 					border-top: 1px solid #b74b5b;
+					font-size: 24px;
 
 					&[data-role="save"] {
 						width: 50%;
 					}
 				}
 
-				&[data-role="operator"] {
+				&.operator {
 					background-color: #f7b986;
 					border-top: 1px solid #d19968;
+					font-size: 32px;
 				}
 
-				&[data-role="number"],
-				&[data-role="dot"] {
+				&.digit {
 					background-color: #f78279;
 					border-top: 1px solid #d46760;
+					font-size: 32px;
 				}
 			}
 		}
