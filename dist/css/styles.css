@@ -17,6 +17,8 @@
 #calc > *.calc__header {
   height: 180px;
   background-color: #29363c;
+  overflow: hidden;
+  white-space: nowrap;
   text-align: right;
 }
 
@@ -29,6 +31,7 @@
 #calc > *.calc__header > *.calc__header__sum {
   color: #6f797b;
   font-size: 28px;
+  height: 33px;
 }
 
 #calc > *.calc__header > *.calc__header__result {
