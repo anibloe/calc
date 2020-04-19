@@ -10,7 +10,7 @@ export default class Calculator {
 		this.display_bottom = 0;
 	}
 
-	// Work out what to do with the new value
+	// Handle the new value
 	update(button) {
 		const newVal = button.textContent;
 
@@ -26,16 +26,20 @@ export default class Calculator {
 		}
 	}
 
-	// Ensure the new value is a valid scenario
+	// Ensure the new value is a valid user journey
 	validate(button) {
 		const newVal = button.textContent,
 			newStatus = button.dataset.role,
-			curNumIsDec = 0; // TO DO
+			curNumIsDec = () => {
+				const entries = this.display_bottom.split(" "),
+					curNum = entries[entries.length - 1];
+				return curNum.indexOf(".") > -1;
+			};
 
 		if (!newVal.trim()) {
 			// Empty button value
 			return false;
-		} else if (newStatus === "decimal" && curNumIsDec) {
+		} else if (newStatus === "decimal" && curNumIsDec()) {
 			// Value is already a decimal - prevent over one dot per number
 			return false;
 		} else if (this.display_bottom === 0 && button.textContent === "0") {

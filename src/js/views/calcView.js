@@ -32,8 +32,6 @@ export const render = () => {
                 <button class="action operator" data-role="evaluate">&#61;</button>
             </div>
         </div>
-
-        <img src="./mockup.png"/>
     `;
 
 	document.body.insertAdjacentHTML("beforeend", markup);
