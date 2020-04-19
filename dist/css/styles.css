@@ -1,3 +1,4 @@
+/* Font */
 @import url(//db.onlinewebfonts.com/c/5b7f117bb7e6466b6c73f42d4d27f200?family=PrimanaW00-Light);
 @font-face {
   font-family: "PrimanaW00-Light";
@@ -6,6 +7,7 @@
 }
 
 #calc {
+  /* Calculator styles */
   width: 260px;
   font-family: "PrimanaW00-Light";
 }
@@ -82,4 +84,28 @@
   background-color: #f78279;
   border-top: 1px solid #d46760;
   font-size: 32px;
+}
+
+table {
+  /* calculations.php table styles */
+  width: 600px;
+  text-align: right;
+  border-spacing: 0;
+  border: 1px solid #000;
+}
+
+table thead {
+  background-color: lightgrey;
+}
+
+table thead th {
+  padding: 10px 20px;
+}
+
+table tbody {
+  background-color: lightblue;
+}
+
+table tbody td {
+  padding: 5px 20px;
 }
